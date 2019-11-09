@@ -43,13 +43,18 @@ popmenu(options);
 	}
 }
 ```
-#### items 格式
+items 选项格式
 ```
 id : {name: "菜单名称"， icon : '图标样式，可选'，divid : '分割线，可选'}
 ```
-#### callback 回调函数 
+#### 回调函数 callback
 ```
 callback: function(item) {...}
 // 参数 item 为被单击元素对象
 ```
+### 关于右键点击弹出菜单事项
 
+绑定 contextmenu 事件时，函数需返回 false ，防止冒泡事件
+在其它事件中，适当使用 event.preventDefault(); 忽略事件
+
+使用方法可参考 [演示地址](//www.tianlunvip.com/demo/popmenu.html "演示地址")
