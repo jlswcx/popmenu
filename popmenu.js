@@ -1,6 +1,8 @@
 // 
 // 需要 jQuery 库支持
 // 只是一个弹出菜单的函数，任何形式都可以调用
+// 作者：tianlunvip
+// 更多插件，请访问 www.tianlunvip.com
 // 
 function popmenu(options) {
 
