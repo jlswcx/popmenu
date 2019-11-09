@@ -23,7 +23,7 @@ popmenu(options);
 	Y: 100,	// 弹出菜单 Y 坐标
 	items : {
 		menu1 : {		    // 菜单 ID 
-			name : '菜单一', 	 // 菜单名称
+			name : '菜单一', 	// 菜单名称
 			icon : '<i class="fa fa-arrow-right"></i>', // 菜单图标，可自定义
 			divid : true	    // 菜单分割线
 		},
@@ -43,5 +43,13 @@ popmenu(options);
 	}
 }
 ```
-
+#### items 选项格式
+```
+id : {name: "菜单名称"， icon : '图标样式，可选'，divid : '分割线，可选'}
+```
+#### 回调函数 callback
+```
+callback: function(item) {...}
+// 参数 item 为被单击元素对象
+```
 
