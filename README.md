@@ -55,6 +55,7 @@ callback: function(item) {...}
 ### 关于右键点击弹出菜单事项
 
 绑定 contextmenu 事件时，函数需返回 false ，防止冒泡事件
+
 在其它事件中，适当使用 event.preventDefault(); 忽略事件
 
 使用方法可参考 [演示地址](//www.tianlunvip.com/demo/popmenu.html "演示地址")
