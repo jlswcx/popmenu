@@ -43,11 +43,11 @@ popmenu(options);
 	}
 }
 ```
-#### items 选项格式
+#### items 格式
 ```
 id : {name: "菜单名称"， icon : '图标样式，可选'，divid : '分割线，可选'}
 ```
-#### 回调函数 callback
+#### callback 回调函数 
 ```
 callback: function(item) {...}
 // 参数 item 为被单击元素对象
