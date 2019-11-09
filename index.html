@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>鼠标点击弹出菜单</title>
+<meta name="keywords" content="文档速记系统,代码参考,代码笔记,代码速记,学习手册,方便查阅">
+<meta name="description" content="吖Go文档速记系统,用于学习笔记的辅助系统,文档分类,文档查询,方便简洁">
+<meta name="author" content="tianlunvip">
+<meta name="website" content="https://www.tianlunvip.com">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="./popmenu.css">
+<script src="./popmenu.js"></script>
+<style type="text/css">
+.fa {
+	color: #2980b9;
+}
+.popmenu-hover .fa {
+	color: #999;
+}
+
+</style>
+</head>
+<body>
+<button id="rightbtn">右键点我</button>
+<script type="text/javascript">
+$(function(){ 
+    $(document).bind("contextmenu",function(e){
+
+      popmenu({
+    		items : {
+    			list : {name : '新建菜单', icon : '<i class="fa fa-file-text-o"></i>', divid : true},
+    			resh : {name : '新建目录', icon : '<i class="fa fa-refresh"></i>'},
+    			del : {name : '回收站', icon : '<i class="fa fa-trash"></i>'},
+    		},
+    		callback: function(item){
+    			var id = $(item).attr('id');
+    			if(id === "list") {
+    				alert("新建菜单");
+    			}else if(id === "resh") {
+    				alert("新建目录");
+    			}else if(id ==="del") {
+    				alert("回收站");
+    			}
+    		}	    		
+		}); 
+      	return false;
+    });
+    
+
+	$('#rightbtn').contextmenu(function(event) {
+
+	    popmenu({
+    		items : {
+    			btn1 : {name : '按钮一', icon : '<i class="fa fa-arrow-right"></i>', divid : true},
+    			btn2 : {name : '按钮二', icon : '<i class="fa fa-arrow-left"></i>'},
+    			btn3 : {name : '按钮三', icon : '<i class="fa fa-arrows"></i>'},
+    		},
+    		callback: function(item){
+    			var id = $(item).attr('id');
+    			if(id === "btn1") {
+    				alert("按钮一");
+    			}else if(id === "btn2") {
+    				alert("按钮二");
+    			}else if(id ==="btn3") {
+    				alert("按钮三");
+    			}
+    		}	    		
+		}); 
+
+		return false;
+    });
+
+});
+</script>
+</body>
+</html>

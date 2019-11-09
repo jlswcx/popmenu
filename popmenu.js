@@ -1,72 +1,87 @@
 // 
 // 需要 jQuery 库支持
-// 使用 Bootstrap 4.3.1 样式
+// 只是一个弹出菜单的函数，任何形式都可以调用
 // 
 function popmenu(options) {
 
 	var opts = {
-		x : 0,
-		y : 0,
+		x : event.clientX,
+		y : event.clientY,
 		items : {},
 		callback : null
 	}
 
-    if (typeof options === 'object') {
+    if (typeof options === 'object') {event.clientX
         $.extend(opts, options);
     } else {
-    	return;
+    	alert("请参考 options 选项正确设置")
+    	return false;
     }
 
-	var listr = '';
+	var menu_items = '';
 
 	for (var item in opts.items) {
-		listr += "<li id='popmenu_" + item + "' class='popmenu-icon popmenu-icon-" + opts.items[item].icon + "'>" + opts.items[item].name + "</li>";
+
+		var name = '';
+		if($.type(opts.items[item].name) === "string") {
+			name = opts.items[item].name + " ";
+		}
+		var icon = '';
+		if($.type(opts.items[item].icon) === "string") {
+			icon = opts.items[item].icon + " ";
+		}
+		var divid = '';
+		if(opts.items[item].divid === true) {
+			divid = "<hr>";
+		} 
+
+		menu_items += "<li id='" + item + "' name='"+ name +"''>" + icon + opts.items[item].name + "</li>" + divid;
 	}
-	listr = "<div class='popmenu-layer'><ul id='popmenu' class='popmenu-list' style='display:none'>" + listr + "</ul></div>";
+	menu_items = "<div role='popmenu-layer'><ul role='popmenu'>" + menu_items + "</ul></div>";
 
-    $("body").append(listr);     
+	$("body").append(menu_items);
 
-	$("#popmenu").css({
-                    'display': 'block',
-                    'left' : opts.x,
-                    'top' : opts.y
-                });
+	$("[role='popmenu']").css({'left' : opts.x, 'top' : opts.y });
 
-	$("#popmenu li").bind("click",function(e){
-		opts.callback(this);
-		$("#popmenu").hide();
-		$(".popmenu-layer").remove();
+	$("[role='popmenu']>li").bind("click",function(e){
+		if($.type(opts.callback) === "function") {
+			opts.callback(this);
+		} else {
+			alert("菜单ID【"+$(this).attr('id')+"】被点击");
+		}
+		$(this).parent().hide();
+		$("[role='popmenu-layer']").remove();
 	});
 
-	$("#popmenu").focus();
+	$("[role='popmenu']").focus();
 
-	$(".popmenu-icon").hover(function() {
+	$("[role='popmenu']>li").hover(function() {
 		$(this).addClass('popmenu-hover');
 	}, function() {
 		$(this).removeClass('popmenu-hover');
 	});
 	// 图层被点击
 	$(".popmenu-layer").mousedown(function(event) {
-		$("#popmenu").hide();
-		$(".popmenu-layer").remove();
+		$("[role='popmenu']").hide();
+		$("[role='popmenu-layer']").remove();
 	});
 	// 浏览器窗口失去焦点
 	$(window).blur(function(event) {
-		$("#popmenu").hide();
-		$(".popmenu-layer").remove();
+		$("[role='popmenu']").hide();
+		$("[role='popmenu-layer']").remove();
 	});
 	// 
 	$(window).mousedown(function(event){
-		$("#popmenu").hide();
-		$(".popmenu-layer").remove();
+		$("[role='popmenu']").hide();
+		$("[role='popmenu-layer']").remove();
 	})
 	// 不响应浏览器右键系统菜单 任何消息
-	$("#popmenu").mousedown(function(event){
+	$("[role='popmenu']").mousedown(function(event){
 		event.stopPropagation();		// 忽略事件
 	})
 	// 窗口大小被改变
 	$(window).resize(function(event) {
-		$("#popmenu").hide();
-		$(".popmenu-layer").remove();
+		$("[role='popmenu']").hide();
+		$("[role='popmenu-layer']").remove();
 	});
 }
