@@ -22,10 +22,10 @@ popmenu(options);
 	X: 100,	// 弹出菜单 X 坐标
 	Y: 100,	// 弹出菜单 Y 坐标
 	items : {
-		menu1 : {				// 菜单 ID 
-			name : '菜单一', 	// 菜单名称
+		menu1 : {		    // 菜单 ID 
+			name : '菜单一', 	 // 菜单名称
 			icon : '<i class="fa fa-arrow-right"></i>', // 菜单图标，可自定义
-			divid : true		// 菜单分割线
+			divid : true	    // 菜单分割线
 		},
 		menu2 : {name : '菜单二', icon : '<i class="fa fa-arrow-left"></i>'},
 		menu3 : {name : '菜单三'},
