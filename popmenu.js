@@ -46,7 +46,10 @@ function popmenu(options) {
 	$("[role='popmenu']").css({'left' : opts.x, 'top' : opts.y });
 
 	$("[role='popmenu']>li").bind("click",function(e){
+
 		if($.type(opts.callback) === "function") {
+			var id = $(this).attr('id');
+			this.id = id;
 			opts.callback(this);
 		} else {
 			alert("菜单ID【"+$(this).attr('id')+"】被点击");
