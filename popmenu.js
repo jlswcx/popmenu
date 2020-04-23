@@ -13,7 +13,7 @@ function popmenu(options) {
 		callback : null
 	}
 
-    if (typeof options === 'object') {event.clientX
+    if (typeof options === 'object') {
         $.extend(opts, options);
     } else {
     	alert("请参考 options 选项正确设置")
